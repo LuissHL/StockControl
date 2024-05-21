@@ -1,0 +1,33 @@
+
+  <div class="dialogTitle">
+    <h2 mat-dialog-title>{{data}}</h2>
+    <button mat-icon-button (click)="closeDialog()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="container">
+    <div class="p-4">
+      <mat-dialog-content>
+        <form [formGroup]="form">
+          <div class="formFields">
+          <mat-form-field>
+            <mat-label>Nome</mat-label>
+            <input matInput  formControlName="name">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Preço</mat-label>
+            <input matInput formControlName="price" type="number" >
+          </mat-form-field>
+        </div>
+        </form>
+      </mat-dialog-content>
+    </div>
+    <div class="footer-dialog">
+      <mat-dialog-actions>
+        <button mat-flat-button color="primary" (click)="onSave()">Salvar</button>
+      </mat-dialog-actions>
+    </div>
+  </div>
+
+
+

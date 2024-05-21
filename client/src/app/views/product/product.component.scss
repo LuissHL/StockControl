@@ -1,0 +1,37 @@
+.container {
+  width: 100%;
+  min-width: 30rem;
+  padding-right: calc(2rem* .5);
+  padding-left: calc(2rem* .5);
+  margin-right: auto;
+  margin-left: auto;
+  box-sizing: border-box;
+}
+
+.dialogTitle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  border-bottom: 1px solid #869094;
+}
+
+.formFields {
+  display: flex;
+  flex-direction: column !important;
+  gap: 1rem;
+
+}
+
+.p-4{
+  padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+  border-bottom: 1px solid #869094;
+}
+
+.footer-dialog{
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}

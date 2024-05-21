@@ -1,0 +1,48 @@
+#addProduct {
+  padding: 15px;
+  width: 100%;
+  max-width: 12rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+
+  font-size: 14px;
+  margin-right: 6%;
+}
+
+.btn-style {
+  border: 1px solid #ada18e;
+  border-radius: 7px;
+  background-color:#202324;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+button:hover {
+  background-color: #2f3435;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10%;
+  padding: 1.7%;
+  background-color: #24292A;
+}
+h1 {
+  margin-left: 8rem;
+  margin-right: 10rem;
+  font-size: 40px;
+  font-family: 'Times New Roman', Times, serif;
+
+}
+
+
+#filterList {
+  padding: 7px;
+  width: 100%;
+  max-width: 4rem;
+
+}
