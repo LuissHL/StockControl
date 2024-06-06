@@ -13,10 +13,19 @@
           <mat-form-field>
             <mat-label>Nome</mat-label>
             <input matInput  formControlName="name">
+            @if (form.get('name')?.invalid) {
+              <mat-error>{{errorMessage('name')}}</mat-error>
+            }
+
           </mat-form-field>
-          <mat-form-field>
+          <mat-form-field >
             <mat-label>Preço</mat-label>
-            <input matInput formControlName="price" type="number" >
+            <input matInput formControlName="price" type="number" class="example-right-align">
+            @if (form.get('price')?.invalid) {
+              <mat-error>{{errorMessage('price')}}</mat-error>
+            }
+            <span matTextPrefix>$&nbsp;</span>
+            <span matTextSuffix>.00</span>
           </mat-form-field>
         </div>
         </form>

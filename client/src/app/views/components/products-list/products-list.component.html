@@ -1,7 +1,7 @@
 <mat-table [dataSource]="products" class="table">
   <!-- Name Column -->
   <ng-container matColumnDef="id">
-    <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
     <mat-cell *matCellDef="let product">{{ product.id }}</mat-cell>
   </ng-container>
 
@@ -12,11 +12,8 @@
 
   <!-- category Column -->
   <ng-container matColumnDef="price">
-    <mat-header-cell *matHeaderCellDef>Preço</mat-header-cell>
-    <mat-cell *matCellDef="let product">{{ product.price }}
-      <mat-icon aria-hidden="false" aria-label="Categoria do curso" > {{product.price}}</mat-icon>
-
-    </mat-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Preço</mat-header-cell>
+    <mat-cell *matCellDef="let product">{{ product.price | currency }}</mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="amount">
@@ -31,11 +28,17 @@
     </mat-header-cell>
 
     <mat-cell *matCellDef="let products" class="action-column">
-      <button mat-icon-button color="primary" aria-label="Editar curso" >
+      <button mat-icon-button color="accent" aria-label="Remover curso" (click)="amountDown(products)">
+        <mat-icon>remove</mat-icon>
+      </button>
+      <button mat-icon-button color="primary" aria-label="Adicionar curso" (click)="amountUp(products)">
+        <mat-icon>add</mat-icon>
+      </button>
+      <button mat-icon-button color="primary" aria-label="Editar curso" (click)="onEdit(products)" >
         <mat-icon>edit</mat-icon>
       </button>
 
-      <button mat-icon-button color="warn" aria-label="Remover curso" >
+      <button mat-icon-button color="warn" aria-label="Remover curso" (click)="removeProduct(products)">
         <mat-icon>delete</mat-icon>
       </button>
     </mat-cell>

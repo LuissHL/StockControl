@@ -1,19 +1,23 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product';
-import { first } from 'rxjs';
+import { first, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-   private readonly API = 'api/stock-control'
+   private readonly API = '/api/stock-control'
 
   constructor(private httpClient: HttpClient) {}
 
   list() {
-    return this.httpClient.get<Product[]>(this.API).pipe( first() );
+    return this.httpClient.get<Product[]>(this.API).pipe(
+      first(),
+      tap((product) => {
+      console.log(product)
+    }) );
   }
 
   save(product: Partial<Product>) {
@@ -24,14 +28,16 @@ export class ProductService {
   }
 
   private create(product: Partial<Product>) {
-    this.httpClient.post<Product>(this.API, product).pipe( first() );
+    return this.httpClient.post<Product>(this.API, product).pipe( first() );
   }
 
-  private update(product: Partial<Product>) {
-    this.httpClient.put<Product>(`${this.API}/${product.id}`, product).pipe( first() );
+  public update(product: Partial<Product>) {
+   return this.httpClient.put<Product>(`${this.API}/${product.id}`, product).pipe( first() );
   }
 
   public remove(id: string) {
     return this.httpClient.delete(`${this.API}/${id}`).pipe(first());
  }
+
+
 }

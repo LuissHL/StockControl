@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import {  NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ProductService } from '../../services/product.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-product',
@@ -15,23 +16,43 @@ import { ProductService } from '../../services/product.service';
 export class ProductComponent {
   form = this.formBuilder.group({
     id: [''],
-    name: [''],
-    price: ['']
+    name: ['', Validators.required],
+    price: ['', Validators.required]
    });
 
    constructor( private formBuilder: NonNullableFormBuilder ,
      public dialogRef: MatDialogRef<ProductComponent>,
     @Inject(MAT_DIALOG_DATA) public data: string,
-    private service: ProductService
-  ) {
-    }
+    private service: ProductService,
+    private _snackbar: MatSnackBar,
+  ) {}
 
     closeDialog(): void {
       this.dialogRef.close();
    }
 
    onSave() {
-    this.service.save(this.form.value)
-    this.closeDialog()
+    this.service.save(this.form.value).subscribe(
+      result =>  this.onSuccess(), error => this.onError())
+
    }
+
+   onError() {
+    this._snackbar.open('Erro ao salvar produto', '', {duration:5000})
+   }
+   onSuccess() {
+    this.closeDialog();
+    this._snackbar.open('Produto salvo com sucesso', '', {duration:5000})
+   }
+
+   errorMessage(fieldName : string) {
+    const field = this.form.get(fieldName)
+
+    if(field?.hasError('required')) {
+      return 'campo obrigatório';
+    }
+
+    return 'Campo inválido';
+  }
+
 }

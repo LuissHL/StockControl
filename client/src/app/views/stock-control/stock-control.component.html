@@ -1,7 +1,9 @@
 <header>
-  <app-navbar></app-navbar>
+  <app-navbar [listProduct]="listProduct" (add)="onAdd()"></app-navbar>
 </header>
 
 <main class="container-main">
-  <app-products-list></app-products-list>
+  <app-products-list #list
+  (edit)="onEdit($event)"
+  (remove)="onRemove($event)"></app-products-list>
 </main>
