@@ -22,14 +22,22 @@ button:hover {
   background-color: #2f3435;
 }
 
-.navbar {
+.container {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10%;
+  padding: 1.7%;
+  background-color: #24292A;
+}
+
+.container-initial {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 10%;
-  padding: 1.7%;
-  background-color: #24292A;
+  padding-bottom: 10px;
+
 }
 h1 {
   margin-left: 8rem;
@@ -46,3 +54,15 @@ h1 {
   max-width: 4rem;
 
 }
+
+.showFormFilter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: max-height 30s ease-in-out;
+}
+
+
+
+
+

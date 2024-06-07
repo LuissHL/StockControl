@@ -3,8 +3,5 @@ import { StockControlComponent } from './views/stock-control/stock-control.compo
 
 export const routes: Routes = [
   {path:'', pathMatch:'full', redirectTo: 'stock-control'},
-  {
-    path: 'courses',
-    loadChildren: () => import('./views/products/products.module').then(m => m.ProductsModule)
-  },
+  {path:'stock-control', component: StockControlComponent}
 ];
