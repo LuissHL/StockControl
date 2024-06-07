@@ -12,7 +12,7 @@
           <div class="formFields">
           <mat-form-field>
             <mat-label>Nome</mat-label>
-            <input matInput  formControlName="name">
+            <input matInput  formControlName="name" type="text">
             @if (form.get('name')?.invalid) {
               <mat-error>{{errorMessage('name')}}</mat-error>
             }

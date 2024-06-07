@@ -1,6 +1,27 @@
-<div class="navbar">
+<div class="container">
+  <div class="container-content">
+  <div class="container-initial">
   <button type="button" id="addProduct" class="btn-style" (click)="openDialog()">Adicionar Produto <mat-icon class="productIcon">inventory 2</mat-icon></button>
   <h1>Controle de Estoque</h1>
-  <button id="filterList" class="btn-style"><mat-icon>filter_list</mat-icon></button>
+  <button id="filterList" class="btn-style"
+   (click)="changeFilterVisibility()"
+    ><mat-icon>filter_list</mat-icon></button>
 </div>
+
+    <div class="showFormFilter" id="product-filter" *ngIf="isFilterVisible">
+      <section>
+        <form>
+          <div>
+            <mat-form-field>
+              <mat-label>Filter</mat-label>
+              <input matInput id="inputFilter" placeholder="Ex. ium" #input>
+            </mat-form-field>
+          </div>
+        </form>
+      </section>
+    </div>
+  </div>
+</div>
+
+
 
