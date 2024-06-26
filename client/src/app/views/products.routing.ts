@@ -1,11 +1,8 @@
-import { Routes, RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
 import { ProductComponent } from './product/product.component';
-import { StockControlComponent } from './stock-control/stock-control.component';
+import { productResolver } from './guards/product.resolver';
 
-const routes: Routes = [
-  {path: '', component: StockControlComponent},
-  {path: 'new', component: ProductComponent   },
-  {path: 'edit/:id', component: ProductComponent}
+export const productRoutes: Routes = [
+  {path: 'Products', children: [ {path: 'newProduct', component: ProductComponent, resolve: {product: productResolver}}]},
 ];
 
-export const ProductsRoutes = RouterModule.forChild(routes);
