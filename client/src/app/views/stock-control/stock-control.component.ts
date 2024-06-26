@@ -19,7 +19,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class StockControlComponent implements AfterViewInit {
 onAdd() {
-  this.router.navigate(['new'], {relativeTo: this.route})
+  this.router.navigate(['newProduct'], {relativeTo: this.route})
 }
 onEdit(product:Product) {
    this.router.navigate(['edit', product.id], { relativeTo: this.route})

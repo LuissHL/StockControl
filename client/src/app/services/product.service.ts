@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product';
-import { first, tap } from 'rxjs';
+import { first, Observable, of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +19,11 @@ export class ProductService {
       console.log(product)
     }) );
   }
+
+  loadById(id: string | null) {
+      return this.httpClient.get<Product>(`${this.API}/${id}`);
+  }
+
 
   save(product: Partial<Product>) {
     if(product.id) {

@@ -1,10 +1,12 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { AppMaterialModule } from '../../shared/app-material/app-material.module';
 import { CommonModule } from '@angular/common';
 import {  NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ProductService } from '../../services/product.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute } from '@angular/router';
+import { Product } from '../../models/product';
 
 @Component({
   selector: 'app-product',
@@ -16,8 +18,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class ProductComponent {
   form = this.formBuilder.group({
     id: [''],
-    name: ['', Validators.required],
-    price: ['', Validators.required]
+    name: ['', [Validators.required]],
+    price: ['', [Validators.required]]
    });
 
    constructor( private formBuilder: NonNullableFormBuilder ,
@@ -25,9 +27,22 @@ export class ProductComponent {
     @Inject(MAT_DIALOG_DATA) public data: string,
     private service: ProductService,
     private _snackbar: MatSnackBar,
+    private route: ActivatedRoute
   ) {}
 
+  ngOnInit(): void {
+    const product: Product = this.route.snapshot.data['product'];
+    if (product) {
+      this.form.setValue({
+        id: product.id,
+        name: product.name,
+        price: product.price
+      });
+    }
+  }
+
     closeDialog(): void {
+
       this.dialogRef.close();
    }
 
