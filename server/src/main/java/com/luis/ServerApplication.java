@@ -22,7 +22,7 @@ public class ServerApplication {
 
 		   Product product = new Product();
 		   product.setName("Notebook Samsung Galaxy");
-		   product.setPrice(2.399);
+		   product.setPrice(2399.0);
 		   stockRepository.save(product);
 	   };
 	}
