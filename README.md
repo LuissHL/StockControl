@@ -22,4 +22,4 @@ Project with Mysql for controlling stock of products.
 2. crie o database stockcontroldb em seu banco mysql:
 3. Run the server:
 
-Finish! Now the application are running in your machine!
+pronto! Agora o aplicativo está rodando na sua máquina!
